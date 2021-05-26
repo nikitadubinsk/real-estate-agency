@@ -1,0 +1,24 @@
+<form [formGroup]="registration">
+  <h3 class="tui-island__title">Регистрация</h3>
+  <tui-input class="b-form" formControlName="name" tuiTextfieldAutocomplete="name">
+    Введите имя
+  </tui-input>
+  <tui-input class="tui-space_top-2" formControlName="email" tuiTextfieldAutocomplete="email">
+    Введите логин
+  </tui-input>
+  <tui-input-date tuiUnfinishedValidator="Finish filling the field" formControlName="birthday" class="tui-space_top-2">
+    Дата рождения
+  </tui-input-date>
+  <tui-input-password class="tui-space_top-2" formControlName="password" tuiTextfieldAutocomplete="password">
+    Введите пароль
+  </tui-input-password>
+  <tui-checkbox-labeled formControlName="personalData" class="tui-space_top-2">
+    Даю согласие на обработку моих персональных данных
+  </tui-checkbox-labeled>
+  <button tuiButton type="button" class="tui-space_top-2 maxWidth" [disabled]="registration.invalid">
+    Зарегестрироваться
+  </button>
+  <p class="tui-island__paragraph tui-island__paragraph_link">Уже есть аккаунт? Самое время
+    <a routerLink="/login" tuiLink>авторизоваться</a>!
+  </p>
+</form>

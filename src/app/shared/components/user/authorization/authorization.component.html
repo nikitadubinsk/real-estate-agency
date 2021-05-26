@@ -1,0 +1,15 @@
+<form [formGroup]="auth">
+  <h3 class="tui-island__title">Авторизация</h3>
+  <tui-input class="b-form" formControlName="email" tuiTextfieldAutocomplete="email">
+    Введите логин
+  </tui-input>
+  <tui-input-password class="tui-space_top-2" formControlName="password" tuiTextfieldAutocomplete="password">
+    Введите пароль
+  </tui-input-password>
+  <button tuiButton type="button" class="tui-space_top-2 maxWidth" [disabled]="auth.invalid">
+    Авторизоваться
+  </button>
+  <p class="tui-island__paragraph tui-island__paragraph_link">Еще нет аккаунта? Самое время
+    <a routerLink="/login/registration" tuiLink>зарегестрироваться</a>!
+  </p>
+</form>
