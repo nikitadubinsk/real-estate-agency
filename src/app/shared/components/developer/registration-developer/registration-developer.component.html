@@ -1,0 +1,25 @@
+<form [formGroup]="registration">
+  <p class="tui-island__category">Застройщик</p>
+  <h3 class="tui-island__title">Регистрация</h3>
+  <tui-notification class="tui-space_top-4" *ngIf="error$ | async as error">
+    {{error}}
+  </tui-notification>
+  <tui-input class="b-form" formControlName="name" tuiTextfieldAutocomplete="name" class="tui-space_top-2">
+    Введите название
+  </tui-input>
+  <tui-text-area formControlName="description" [expandable]="true" [rows]="15" class="tui-space_top-2">Описание
+  </tui-text-area>
+  <tui-input class="tui-space_top-2" formControlName="email" tuiTextfieldAutocomplete="email">
+    Введите логин
+  </tui-input>
+  <tui-input-password class="tui-space_top-2" formControlName="password" tuiTextfieldAutocomplete="password">
+    Введите пароль
+  </tui-input-password>
+  <button tuiButton type="button" class="tui-space_top-2 maxWidth" [disabled]="registration.invalid"
+    (click)="registrate()" [showLoader]="loading">
+    Зарегестрироваться
+  </button>
+  <p class="tui-island__paragraph tui-island__paragraph_link">Уже есть аккаунт? Самое время
+    <a routerLink="/developer/login" tuiLink>авторизоваться</a>!
+  </p>
+</form>

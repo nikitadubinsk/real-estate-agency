@@ -1,0 +1,20 @@
+<form [formGroup]="auth">
+  <p class="tui-island__category">Застройщик</p>
+  <h3 class="tui-island__title">Авторизация</h3>
+  <tui-notification class="tui-space_top-4" *ngIf="error$ | async as error">
+    {{error}}
+  </tui-notification>
+  <tui-input class="tui-space_top-2" formControlName="email" tuiTextfieldAutocomplete="email">
+    Введите логин
+  </tui-input>
+  <tui-input-password class="tui-space_top-2" formControlName="password" tuiTextfieldAutocomplete="password">
+    Введите пароль
+  </tui-input-password>
+  <button tuiButton type="button" class="tui-space_top-2 maxWidth" [disabled]="auth.invalid" (click)="autherization()"
+    [showLoader]="loading">
+    Авторизоваться
+  </button>
+  <p class="tui-island__paragraph tui-island__paragraph_link">Еще нет аккаунта? Самое время
+    <a routerLink="/developer/login/registration" tuiLink>зарегестрироваться</a>!
+  </p>
+</form>

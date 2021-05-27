@@ -1,0 +1,16 @@
+<section>
+  <tui-tabs>
+    <h1 class="tui-text_h3 title tui-space_left-6 tui-space_right-10 tui-space_top-3">Административная панель
+      застройщика
+    </h1>
+    <a tuiTab routerLink='/developer' routerLinkActive [routerLinkActiveOptions]="{exact:true}">Список объявлений</a>
+    <a tuiTab routerLink='/developer/realtors' routerLinkActive [routerLinkActiveOptions]="{exact:true}">Список
+      риэлторов</a>
+    <a tuiTab routerLink='/developer/new-realtor' routerLinkActive [routerLinkActiveOptions]="{exact:true}">Добавить
+      нового
+      риэлтора</a>
+  </tui-tabs>
+  <div class="block">
+    <router-outlet></router-outlet>
+  </div>
+</section>
