@@ -1,0 +1,12 @@
+<section>
+  <tui-tabs>
+    <h1 class="tui-text_h3 title tui-space_left-6 tui-space_right-10 tui-space_top-3">Панель риэлтора
+    </h1>
+    <a tuiTab routerLink='/realtor' routerLinkActive [routerLinkActiveOptions]="{exact:true}">Список моих объявлений</a>
+    <a tuiTab routerLink='/realtor/new-ad' routerLinkActive [routerLinkActiveOptions]="{exact:true}">Добавить
+      новое объявление</a>
+  </tui-tabs>
+  <div class="block">
+    <router-outlet></router-outlet>
+  </div>
+</section>

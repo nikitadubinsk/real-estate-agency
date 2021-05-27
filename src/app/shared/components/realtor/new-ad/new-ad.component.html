@@ -1,0 +1,43 @@
+<tui-island [hoverable]="true">
+  <p class="tui-island__category">
+    Риэлтор
+  </p>
+  <h3 class="tui-island__title">
+    Добавить новое объявление
+  </h3>
+  <form>
+    <tui-input class="b-form" formControlName="name" tuiTextfieldAutocomplete="name">
+      Название объявления
+    </tui-input>
+    <tui-text-area formControlName="decscription" [expandable]="true" [rows]="15" class="tui-space_top-2">Описание
+      объявления</tui-text-area>
+    <tui-input class="tui-space_top-2" formControlName="address" tuiTextfieldAutocomplete="address">
+      Ардес недвижимости
+    </tui-input>
+    <tui-input class="tui-space_top-2" formControlName="size" tuiTextfieldAutocomplete="size">
+      Площадь недвижимости
+    </tui-input>
+    <tui-input-number formControlName="floor" class="tui-space_top-2">
+      Этаж недвижимости
+    </tui-input-number>
+    <tui-select formControlName="type_apartament" class="tui-space_top-2">Тип недвижимости
+      <tui-data-list-wrapper *tuiDataList [items]="type_apartament"></tui-data-list-wrapper>
+    </tui-select>
+    <tui-select formControlName="type_apartament" class="tui-space_top-2">Тип объявления
+      <tui-data-list-wrapper *tuiDataList [items]="type_ad"></tui-data-list-wrapper>
+    </tui-select>
+    <tui-multi-select formControlName="conveniences" class="tui-space_top-2">Удобства
+      <tui-data-list-wrapper *tuiDataList tuiMultiSelectGroup [items]="conveniences"></tui-data-list-wrapper>
+    </tui-multi-select>
+    <tui-input-number formControlName="price" class="tui-space_top-2" [postfix]="'RUB' | tuiCurrency">
+      Сумма
+    </tui-input-number>
+    <div class="tui-space_top-4">
+      <angular-file-uploader #fileUpload1 [config]="afuConfig" (ApiResponse)="fileUpload($event)">
+      </angular-file-uploader>
+    </div>
+    <button tuiButton type="button" class="tui-space_top-2 maxWidth">
+      Добавить новое объявление
+    </button>
+  </form>
+</tui-island>

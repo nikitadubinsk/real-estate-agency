@@ -7,6 +7,12 @@ import { AuthorizationDeveloperComponent } from './shared/components/developer/a
 import { MainDeveloperPageComponent } from './shared/components/developer/main-developer-page/main-developer-page.component';
 import { NewRealtorComponent } from './shared/components/developer/new-realtor/new-realtor.component';
 import { RegistrationDeveloperComponent } from './shared/components/developer/registration-developer/registration-developer.component';
+import { AllRealtorAdsComponent } from './shared/components/realtor/all-realtor-ads/all-realtor-ads.component';
+import { AuthenticationRealtorComponent } from './shared/components/realtor/authentication-realtor/authentication-realtor.component';
+import { AuthorizationRealtorComponent } from './shared/components/realtor/authorization-realtor/authorization-realtor.component';
+import { MainRealtorAdComponent } from './shared/components/realtor/main-realtor-ad/main-realtor-ad.component';
+import { NewAdComponent } from './shared/components/realtor/new-ad/new-ad.component';
+import { NewPasswordRealtorComponent } from './shared/components/realtor/new-password-realtor/new-password-realtor.component';
 import { AccountComponent } from './shared/components/user/account/account.component';
 import { AuthenticationComponent } from './shared/components/user/authentication/authentication.component';
 import { AuthorizationComponent } from './shared/components/user/authorization/authorization.component';
@@ -25,19 +31,36 @@ const routes: Routes = [
   },
   { path: 'account', component: AccountComponent },
   {
-    path: 'developer', component: MainDeveloperPageComponent,
+    path: 'developer',
+    component: MainDeveloperPageComponent,
     children: [
       { path: 'realtors', component: AllRealtorComponent },
       { path: '', component: AllAdsComponent },
       { path: 'new-realtor', component: NewRealtorComponent },
-      {
-        path: 'login',
-        component: AuthenticationDeveloperComponent,
-        children: [
-          { path: '', component: AuthorizationDeveloperComponent },
-          { path: 'registration', component: RegistrationDeveloperComponent },
-        ],
-      },
+    ],
+  },
+  {
+    path: 'developer/login',
+    component: AuthenticationDeveloperComponent,
+    children: [
+      { path: '', component: AuthorizationDeveloperComponent },
+      { path: 'registration', component: RegistrationDeveloperComponent },
+    ],
+  },
+  {
+    path: 'realtor',
+    component: MainRealtorAdComponent,
+    children: [
+      { path: '', component: AllRealtorAdsComponent },
+      { path: 'new-ad', component: NewAdComponent },
+    ],
+  },
+  {
+    path: 'realtor/login',
+    component: AuthenticationRealtorComponent,
+    children: [
+      { path: '', component: AuthorizationRealtorComponent },
+      { path: 'new-password', component: NewPasswordRealtorComponent },
     ],
   },
 ];

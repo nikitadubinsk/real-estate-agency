@@ -1,12 +1,18 @@
-<tui-island>
+<tui-island [hoverable]="true">
   <p class="tui-island__category">
     Застройщик
   </p>
   <h3 class="tui-island__title">
     Добавить нового риэлтора
   </h3>
+  <tui-notification class="tui-space_top-4" *ngIf="error$ | async as error">
+    {{error}}
+  </tui-notification>
+  <tui-notification class="tui-space_top-4" *ngIf="success$ | async as success">
+    {{success}}
+  </tui-notification>
   <form [formGroup]="newRealtor">
-    <tui-input class="b-form" formControlName="name" tuiTextfieldAutocomplete="name">
+    <tui-input class="tui-space_top-2" formControlName="name" tuiTextfieldAutocomplete="name">
       Введите имя риэлтора
     </tui-input>
     <tui-input class="tui-space_top-2" formControlName="email" tuiTextfieldAutocomplete="email">
@@ -19,7 +25,8 @@
       class="tui-space_top-2">
       Дата рождения
     </tui-input-date>
-    <button tuiButton type="button" class="tui-space_top-2 maxWidth" [disabled]="newRealtor.invalid">
+    <button tuiButton type="button" class="tui-space_top-2 maxWidth" [disabled]="newRealtor.invalid"
+      (click)="createRealtor()">
       Добавить нового риэлтора
     </button>
   </form>

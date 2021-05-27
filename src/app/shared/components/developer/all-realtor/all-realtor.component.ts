@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeveloperService } from 'src/app/shared/services/developer.service';
 
 @Component({
   selector: 'app-all-realtor',
@@ -8,8 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class AllRealtorComponent implements OnInit {
   loading = false;
   search = '';
+  realtors: any;
 
-  constructor() {}
+  constructor(private developerService: DeveloperService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loading = true;
+    this.developerService
+      .realtors({ developer_id: localStorage['developer_id'] })
+      .subscribe((res) => {
+        this.realtors = res;
+        console.log(this.realtors);
+        this.loading = false;
+      });
+  }
 }
