@@ -1,0 +1,17 @@
+section {
+  min-height: 100vh;
+  background: url(../../../../../assets/back.svg) no-repeat center top / cover;
+}
+
+.tcenter {
+  text-align: center;
+}
+
+.personal {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1%;
+  div {
+    margin-left: 1%;
+  }
+}

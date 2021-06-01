@@ -1,1 +1,95 @@
-<p>main-page works!</p>
+<nav class="block">
+  <h2 class="tui-text_h3">Агенство недвижимости Maison</h2>
+  <button tuiButton type="button" icon="tuiIconArrowRight" size="s" (click)="login()" *ngIf="!userId">
+    Авторизоваться
+  </button>
+  <button tuiButton type="button" icon="tuiIconUser" size="s" (click)="account()" *ngIf="userId">
+    Аккаунт
+  </button>
+</nav>
+<section class="main">
+  <h2 class="tui-text_h2 tui-space_bottom-8">Maison - вся неджижимость</h2>
+  <form class="input-wrapper" [formGroup]="findAd">
+    <div tuiGroup class="group" [orientation]="orientation">
+      <tui-select formControlName="type_ad" class="tui-group__inherit-item">Тип объявления
+        <tui-data-list-wrapper *tuiDataList [items]="type_ad"></tui-data-list-wrapper>
+      </tui-select>
+      <tui-select formControlName="type_apartament" class="tui-group__inherit-item">Тип недвижимости
+        <tui-data-list-wrapper *tuiDataList [items]="type_apartament"></tui-data-list-wrapper>
+      </tui-select>
+      <tui-input class="tui-group__inherit-item" formControlName="size" tuiTextfieldAutocomplete="size">
+        Площадь недвижимости
+      </tui-input>
+      <tui-input-number formControlName="priceFrom" class="tui-group__inherit-item" [postfix]="'RUB' | tuiCurrency">
+        Сумма от
+      </tui-input-number>
+      <tui-input-number formControlName="priceTo" class="tui-group__inherit-item" [postfix]="'RUB' | tuiCurrency">
+        Сумма до
+      </tui-input-number>
+    </div>
+    <div tuiGroup class="group" [orientation]="orientation">
+      <button tuiButton type="button" icon="tuiIconSearch" class="tui-space_top-1 maxWidth" (click)="findAllAd()">
+        Найти недвижимость
+      </button>
+      <button tuiButton type="button" icon="tuiIconPin" class="tui-space_top-1 maxWidth" appearance="secondary"
+        (click)="onMap()">
+        Показать на карте
+      </button>
+    </div>
+  </form>
+</section>
+
+<section class="loading block">
+  <tui-loader [showLoader]="loading" size="xl">
+  </tui-loader>
+</section>
+
+<section class="withmap block" *ngIf="!loading && isWithMap">
+  <div class="container">
+    <ya-map [center]="[+ads[0].longitude, +ads[0].latitude]" [zoom]="10">
+      <ya-placemark *ngFor="let ad of ads" [geometry]="[+ad.longitude, +ad.latitude]"
+        [properties]="{hintContent: ad.address}">
+      </ya-placemark>
+    </ya-map>
+  </div>
+  <div class="details">
+    <app-mini-ad *ngFor="let ad of ads" [ad]="ad"></app-mini-ad>
+  </div>
+</section>
+
+<section class="ads block" *ngIf="!loading && isAll">
+  <h3 class="tui-text_h3 tui-space_top-8 tui-space_bottom-6">Поиск всех объявлений (нашлось {{ads.length}})</h3>
+  <app-ad *ngFor="let ad of ads" [ad]="ad"></app-ad>
+</section>
+
+<section class="block">
+  <h3 class="tui-text_h3 tui-space_bottom-4">Почему именно Maison?</h3>
+  <p class="tui-text_body-s">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error obcaecati labore porro
+    nobis, alias at, officia voluptatem voluptatum sapiente molestiae aspernatur harum! Pariatur cupiditate vitae eius.
+    Fugit deserunt perspiciatis cupiditate.
+    Deserunt sed necessitatibus a dolor, atque quidem quasi minus hic cumque reprehenderit distinctio quae, asperiores
+    unde? Quod possimus doloremque laudantium asperiores, dolorum maiores ipsum assumenda pariatur, culpa voluptatem
+    quis rem!
+    Mollitia incidunt earum repellendus dolorem hic quod sed porro aspernatur nisi natus sapiente labore iusto fugit
+    quae aut animi molestiae quibusdam, ipsam accusamus. Recusandae eligendi fugit deleniti blanditiis asperiores
+    voluptate!
+    Dolore illo cumque ea repellendus fugiat excepturi accusamus, cum odio itaque accusantium! Nesciunt, voluptatem
+    aspernatur atque placeat nam ex vitae, iusto minus quisquam minima accusantium molestiae ea dolores non cum.
+    Maiores accusantium facere, sed quas incidunt harum quos iure repellendus perferendis. Deserunt ab cupiditate fugit
+    quidem amet ipsa, dolorem soluta doloribus reprehenderit harum doloremque quos illum odit voluptatem sit sunt?</p>
+</section>
+
+<footer class="block">
+  <div>
+    <p><strong>Агенство недвижимости "Maison"</strong></p>
+    <a routerLink="/login">Авторизоваться</a>
+    <a routerLink="/realtor/login">Войти как риелтор</a>
+    <a routerLink="/developer/login">Войти как застройщик</a>
+  </div>
+  <div>
+    <i class="fab fa-vk"></i>
+    <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-youtube"></i>
+  </div>
+</footer>

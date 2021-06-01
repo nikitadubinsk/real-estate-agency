@@ -28,6 +28,7 @@
     "@taiga-ui/icons": "^2.10.0",
     "@taiga-ui/kit": "^2.10.0",
     "angular-file-uploader": "^7.0.3",
+    "angular8-yandex-maps": "^12.1.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "rxjs": "~6.6.0",

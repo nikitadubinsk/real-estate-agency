@@ -1,0 +1,59 @@
+.island {
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+  margin-bottom: 2%;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 8px 16px rgb(51 51 51 / 20%);
+  h5 {
+    display: flex;
+    align-items: center;
+    .light-mode {
+      background-color: #3aa981;
+    }
+    .dark-mode {
+      background-color: #526ed3;
+    }
+  }
+  .details {
+    padding: 1%;
+    z-index: 2;
+    position: relative;
+    .like {
+      position: absolute;
+      top: 2%;
+      right: 1%;
+      background: white;
+      box-sizing: border-box;
+      cursor: pointer;
+      color: var(--tui-text-03);
+      transition: 0.5s;
+      &:hover {
+        color: var(--tui-negative-hover);
+      }
+    }
+  }
+  .realtor {
+    display: flex;
+    div:nth-child(1) {
+      width: 32vw;
+      margin-right: 1vw;
+    }
+  }
+}
+
+.bold {
+  font-weight: 900;
+}
+
+.gray {
+  color: var(--tui-text-03);
+}
+
+.isLike {
+  color: var(--tui-negative) !important;
+  &:hover {
+    color: var(--tui-text-03) !important;
+  }
+}

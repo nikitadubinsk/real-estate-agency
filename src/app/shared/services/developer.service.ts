@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -31,5 +32,23 @@ export class DeveloperService {
       `${environment.urlApi}/developer/realtors`,
       developer_id
     );
+  }
+
+  statistics(developer_id: number) {
+    return this.http.get(
+      `${environment.urlApi}/developer/statistics/${developer_id}`
+    );
+  }
+
+  ads(developer_id: number) {
+    return this.http.get(`${environment.urlApi}/developer/ads/${developer_id}`);
+  }
+
+  deleteRealtor(id: number) {
+    return this.http.delete(`${environment.urlApi}/developer/deleteRealtor/${id}`);
+  }
+
+  editRealtor(realtor: any) {
+    return this.http.put(`${environment.urlApi}/developer/edit`, realtor);
   }
 }

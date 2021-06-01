@@ -1,9 +1,11 @@
-@import '~@taiga-ui/core/styles/taiga-ui-local';
+@import "~@taiga-ui/core/styles/taiga-ui-local";
+@import "fonts/stylesheet.css";
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: Gilroy;
 }
 
 .block {
@@ -12,8 +14,21 @@
 
 .maxWidth {
   width: 100%;
+  box-sizing: border-box;
 }
 
 .tui-text-center {
   text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+  .block {
+    padding: 1% 5%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .block {
+    padding: 1%;
+  }
 }

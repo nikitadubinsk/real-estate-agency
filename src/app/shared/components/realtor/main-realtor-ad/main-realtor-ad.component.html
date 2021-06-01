@@ -1,11 +1,17 @@
 <section>
-  <tui-tabs>
-    <h1 class="tui-text_h3 title tui-space_left-6 tui-space_right-10 tui-space_top-3">Панель риэлтора
-    </h1>
-    <a tuiTab routerLink='/realtor' routerLinkActive [routerLinkActiveOptions]="{exact:true}">Список моих объявлений</a>
-    <a tuiTab routerLink='/realtor/new-ad' routerLinkActive [routerLinkActiveOptions]="{exact:true}">Добавить
-      новое объявление</a>
-  </tui-tabs>
+  <nav>
+    <tui-tabs-with-more [itemsLimit]="itemsLimit">
+      <h1 class="tui-text_h3 title tui-space_left-6 tui-space_right-10 tui-space_top-3">Панель риэлтора
+      </h1>
+      <a *tuiTab tuiTab routerLink='/realtor' routerLinkActive [routerLinkActiveOptions]="{exact:true}">Мои
+        объявления</a>
+      <a *tuiTab tuiTab routerLink='/realtor/new-ad' routerLinkActive [routerLinkActiveOptions]="{exact:true}">Добавить
+        новое объявление</a>
+    </tui-tabs-with-more>
+    <button tuiButton type="button" icon="tuiIconArrowRight" size="s" (click)="logout()">
+      Выйти
+    </button>
+  </nav>
   <div class="block">
     <router-outlet></router-outlet>
   </div>

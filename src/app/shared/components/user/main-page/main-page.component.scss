@@ -1,0 +1,95 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main {
+  background: url(../../../../../assets/manBack.jpg) no-repeat center top /
+    cover;
+  min-height: 10vh;
+  padding: 4% 5% 10% 5%;
+  h2 {
+    color: white;
+  }
+}
+
+.withmap {
+  padding: 1vh 10%;
+  display: flex;
+  height: 100vh;
+  .container {
+    height: 98;
+    width: 30vw;
+    margin-right: 2vw;
+  }
+  .details {
+    height: 98;
+    width: 48vw;
+    overflow: scroll;
+    padding: 0 1%;
+  }
+}
+
+footer {
+  background: var(--tui-primary);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+  i {
+    font-size: 25px;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      color: var(--tui-text-02-night);
+    }
+  }
+  a {
+    color: white;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  nav {
+    flex-direction: column;
+  }
+  .tui-text_h3 {
+    font-size: 20px;
+  }
+  .tui-text_h2 {
+    font-size: 25px;
+    line-height: 0.9;
+  }
+  footer {
+    flex-direction: column;
+    i {
+      font-size: 25px;
+      margin-left: 0rem;
+      margin-right: 1rem;
+      margin-top: 1rem;
+    }
+  }
+  .group {
+    width: 90vw;
+    margin-bottom: 2vh;
+  }
+  .withmap {
+    padding: 1%;
+    flex-direction: column;
+    min-height: 100vh;
+    .container {
+      height: 35vh;
+      width: 98vw;
+      margin-right: 0vw;
+    }
+    .details {
+      height: 64vh;
+      width: 98vw;
+      overflow: scroll;
+      padding: 0 1%;
+    }
+  }
+}

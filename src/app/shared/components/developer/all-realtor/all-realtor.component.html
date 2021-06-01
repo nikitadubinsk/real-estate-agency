@@ -8,6 +8,12 @@
   <tui-input class="tui-space_bottom-4" [(ngModel)]="search" icon="tuiIconSearch">
     Поиск по имени курьера
   </tui-input>
+  <tui-notification class="tui-space_top-4" *ngIf="error$ | async as error">
+    {{error}}
+  </tui-notification>
+  <tui-notification class="tui-space_top-4" *ngIf="success$ | async as success">
+    {{success}}
+  </tui-notification>
   <table>
     <tr>
       <th>№</th>
@@ -21,18 +27,21 @@
     <td colspan="7" *ngIf="loading">
       <tui-loader [showLoader]="loading" size="xxl"></tui-loader>
     </td>
-    <td colspan="7" *ngIf="!realtors" class="tui-text-center">
+    <td colspan="7" *ngIf="!realtors && !loading" class="tui-text-center">
       <tui-marker-icon src="tuiIconMinusCircle" class="tui-space_top-6"></tui-marker-icon>
       <h3 class="tui-island__title" class="tui-space_top-2">Нет риэлторов</h3>
     </td>
-    <tr *ngFor="let realtor of realtors; let idx = index;">
-      <td>{{idx+1}}</td>
-      <td>{{realtor.name}}</td>
-      <td>{{realtor.email}}</td>
-      <td>{{realtor.telephone}}</td>
-      <td>{{realtor.birthday | date:'dd.MM.YYYY'}}</td>
-      <td><button tuiButton type="button" appearance="secondary">Изменить</button></td>
-      <td><button tuiButton type="button" appearance="primary">Удалить</button></td>
+    <tr *ngFor="let realtor of realtors | realtorFilter:search; let idx = index;">
+      <td data-label="№">{{idx+1}}</td>
+      <td data-label="ФИО">{{realtor.name}}</td>
+      <td data-label="Email">{{realtor.email}}</td>
+      <td data-label="Телефон">{{realtor.telephone}}</td>
+      <td data-label="Дата рождения">{{realtor.birthday | date:'dd.MM.YYYY'}}</td>
+      <td><button tuiButton type="button" appearance="secondary" (click)="edit(realtor)">Изменить</button></td>
+      <td><button tuiButton type="button" appearance="primary" (click)="delete(realtor.id)">Удалить</button></td>
     </tr>
   </table>
 </tui-island>
+
+<app-edit-realtor [realtor]="realtor" *ngIf="isEdit" (onEdit)="editRealtor($event)"
+  (oncloseEditForm)="closeEdit($event)"></app-edit-realtor>

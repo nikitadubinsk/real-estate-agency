@@ -6,13 +6,15 @@
     Статистика объявлений
   </h3>
   <div class="wrapper">
-    <tui-bar-set class="bars" [value]="value" size="l"></tui-bar-set>
-    <div class="legend">
+    <tui-loader [showLoader]="loading">
+    </tui-loader>
+    <tui-bar-set class="bars" [value]="value" size="l" *ngIf="!loading"></tui-bar-set>
+    <div class="legend" *ngIf="!loading">
       <tui-legend-item *ngFor="let label of labels; let index = index" class="item" [text]="label"
-        color="colorHandler(index)" [active]="isItemActive(index)">
+        color="colorHandler(index)">
       </tui-legend-item>
     </div>
   </div>
 </tui-island>
 
-<app-ad></app-ad>
+<app-ad *ngFor="let ad of ads" [ad]="ad" [isDeveloper]="true"></app-ad>

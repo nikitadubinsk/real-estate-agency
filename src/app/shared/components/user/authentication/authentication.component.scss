@@ -1,19 +1,29 @@
 section {
   display: flex;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
   .back {
     width: 50vw;
-    background: url(../../../../../assets/build1.jpg) no-repeat center top / cover;
+    background: url(../../../../../assets/build1.jpg) no-repeat center top /
+      cover;
     height: 100vh;
   }
   .reg {
-    background: url(../../../../../assets/back.png) no-repeat center top / cover;
+    background: url(../../../../../assets/back.svg) no-repeat center top / cover;
     width: 50vw;
     padding: 2% 5%;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .back {
+    display: none;
+  }
+  .reg {
+    width: 100vw !important;
   }
 }

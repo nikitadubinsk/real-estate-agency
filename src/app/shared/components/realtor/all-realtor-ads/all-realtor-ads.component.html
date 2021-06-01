@@ -1,1 +1,21 @@
-<p>all-realtor-ads works!</p>
+<tui-input icon="tuiIconSearch" [(ngModel)]="search">
+  Поиск по объявлениям
+</tui-input>
+<div class="sort tui-space_bottom-8 tui-space_top-1">
+  <p *ngIf="isSortPriceTouched" (click)="sortPrice()" [ngClass]="{ bold: isSortPrice, light: !isSortPrice }">
+    ↑ По стоимости
+  </p>
+  <p *ngIf="!isSortPriceTouched" (click)="sortPrice()" [ngClass]="{ bold: isSortPrice, light: !isSortPrice }">
+    ↓ По стоииости
+  </p>
+  <p *ngIf="isSortCreatedAtTouched" (click)="sortCreatedAt()"
+    [ngClass]="{ bold: isSortCreatedAt, light: !isSortCreatedAt }">
+    ↑ По дате опубликования
+  </p>
+  <p *ngIf="!isSortCreatedAtTouched" (click)="sortCreatedAt()"
+    [ngClass]="{ bold: isSortCreatedAt, light: !isSortCreatedAt }">
+    ↓ По дате опубликования
+  </p>
+</div>
+
+<app-ad [ad]="ad" *ngFor="let ad of ads | adsFilter:search" [isRealtor]=true></app-ad>

@@ -5,11 +5,17 @@
   <h3 class="tui-island__title">
     Добавить новое объявление
   </h3>
-  <form>
-    <tui-input class="b-form" formControlName="name" tuiTextfieldAutocomplete="name">
+  <tui-notification class="tui-space_top-4" *ngIf="error$ | async as error">
+    {{error}}
+  </tui-notification>
+  <tui-notification class="tui-space_top-4" *ngIf="success$ | async as success">
+    {{success}}
+  </tui-notification>
+  <form [formGroup]="newAd">
+    <tui-input class="tui-space_top-2" formControlName="title" tuiTextfieldAutocomplete="title">
       Название объявления
     </tui-input>
-    <tui-text-area formControlName="decscription" [expandable]="true" [rows]="15" class="tui-space_top-2">Описание
+    <tui-text-area formControlName="description" [expandable]="true" [rows]="15" class="tui-space_top-2">Описание
       объявления</tui-text-area>
     <tui-input class="tui-space_top-2" formControlName="address" tuiTextfieldAutocomplete="address">
       Ардес недвижимости
@@ -23,7 +29,7 @@
     <tui-select formControlName="type_apartament" class="tui-space_top-2">Тип недвижимости
       <tui-data-list-wrapper *tuiDataList [items]="type_apartament"></tui-data-list-wrapper>
     </tui-select>
-    <tui-select formControlName="type_apartament" class="tui-space_top-2">Тип объявления
+    <tui-select formControlName="type_ad" class="tui-space_top-2">Тип объявления
       <tui-data-list-wrapper *tuiDataList [items]="type_ad"></tui-data-list-wrapper>
     </tui-select>
     <tui-multi-select formControlName="conveniences" class="tui-space_top-2">Удобства
@@ -36,7 +42,7 @@
       <angular-file-uploader #fileUpload1 [config]="afuConfig" (ApiResponse)="fileUpload($event)">
       </angular-file-uploader>
     </div>
-    <button tuiButton type="button" class="tui-space_top-2 maxWidth">
+    <button tuiButton type="button" class="tui-space_top-2 maxWidth" (click)="createAd()">
       Добавить новое объявление
     </button>
   </form>

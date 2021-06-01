@@ -1,0 +1,25 @@
+<div class="island">
+  <div class="details" id="details" [ngClass]="{'gray': !ad.relevance}">
+    <tui-svg class="icon" src="tuiIconHeartLarge" class="like" *ngIf="userId"
+      [ngClass]="{'isLike': isLike}" (click)="like()"></tui-svg>
+    <h5 class="tui-text_h5 tui-space_bottom-4">
+      {{ad.title}} <tui-tag value="Новое" class="tui-space_left-6 light-mode" *ngIf="ad.relevance"></tui-tag>
+      <tui-tag value="Неактуально" class="tui-space_left-6" *ngIf="!ad.relevance"></tui-tag>
+      <tui-tag value="Аренда" class="tui-space_left-2 dark-mode" *ngIf="ad.type_ad=='Аренда' && ad.relevance"></tui-tag>
+      <tui-tag value="Аренда" class="tui-space_left-2 dark-mode" *ngIf="ad.type_ad=='Продажа' && ad.relevance">
+      </tui-tag>
+    </h5>
+    <tui-money currency="RUB" [value]="+ad.price" class="tui-text_h6"> </tui-money> / месяц
+    <p class="tui-text_body-s tui-space_top-4">
+      {{ad.description}}
+    </p>
+    <p class="tui-text_body-s tui-space_bottom-2 tui-space_top-2">
+      <tui-svg class="icon" src="tuiIconPin"></tui-svg> {{ad.address}}
+    </p>
+    <p class="tui-space_top-2 tui-text_body-xs">ДАННЫЕ О КВАРТИРЕ</p>
+    <p class="tui-text_body-s"><span class="bold">Этаж:</span> {{ad.floor}}</p>
+    <p class="tui-text_body-s "><span class="bold">Площадь:</span> {{ad.floor}} кв.м.</p>
+    <p class="tui-text_body-s "><span class="bold">Тип:</span> {{ad.type_apartament | lowercase}}</p>
+    <p class="tui-text_body-s "><span class="bold">Удобства:</span> {{ad.conveniences | lowercase}}</p>
+  </div>
+</div>

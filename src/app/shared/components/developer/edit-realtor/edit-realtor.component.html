@@ -1,0 +1,30 @@
+<tui-island [hoverable]="true" class="tui-space_top-4">
+  <p class="tui-island__category">
+    Застройщик
+  </p>
+  <h3 class="tui-island__title">
+    Редактировать риэлтора {{realtor.name}}
+  </h3>
+  <tui-notification class="tui-space_top-4" *ngIf="error$ | async as error">
+    {{error}}
+  </tui-notification>
+  <form [formGroup]="editRealtor">
+    <tui-input class="tui-space_top-2" formControlName="name" tuiTextfieldAutocomplete="name">
+      Введите имя риэлтора
+    </tui-input>
+    <tui-input class="tui-space_top-2" formControlName="email" tuiTextfieldAutocomplete="email">
+      Введите логин риэлтора
+    </tui-input>
+    <tui-input-phone formControlName="telephone" class="tui-space_top-2">
+      Номер телефона
+    </tui-input-phone>
+    <!-- <tui-input-date tuiUnfinishedValidator="Finish filling the field" formControlName="birthday"
+      class="tui-space_top-2">
+      Дата рождения
+    </tui-input-date> -->
+    <button tuiButton type="button" class="tui-space_top-2 maxWidth" [disabled]="editRealtor.invalid" (click)="edit()"
+      [showLoader]="loading">
+      Сохранить данные риэлтора
+    </button>
+  </form>
+</tui-island>

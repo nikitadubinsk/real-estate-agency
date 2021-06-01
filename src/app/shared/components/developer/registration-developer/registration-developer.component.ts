@@ -12,7 +12,10 @@ import { DeveloperService } from 'src/app/shared/services/developer.service';
 export class RegistrationDeveloperComponent {
   registration = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    description: new FormControl('', [Validators.required]),
+    description: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(65534),
+    ]),
     name: new FormControl('', [Validators.required]),
     password: new FormControl('', [
       Validators.required,

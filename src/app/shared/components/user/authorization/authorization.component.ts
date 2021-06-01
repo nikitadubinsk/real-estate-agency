@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
   styleUrls: ['./authorization.component.scss'],
 })
-export class AuthorizationComponent implements OnInit {
+export class AuthorizationComponent {
   auth = new FormGroup({
-    name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
@@ -16,7 +18,24 @@ export class AuthorizationComponent implements OnInit {
     ]),
   });
 
-  constructor() {}
+  loading: boolean = false;
 
-  ngOnInit(): void {}
+  public error$: Subject<string> = new Subject<string>();
+
+  constructor(private userService: UserService, private router: Router) {}
+
+  authorization() {
+    this.loading = true;
+    this.userService.auth(this.auth.value).subscribe(
+      (res) => {
+        localStorage['user_id'] = Object.values(res)[0];
+        this.auth.reset();
+        this.router.navigate(['/account']);
+      },
+      (error) => {
+        this.error$.next(error.error.message);
+        this.loading = false;
+      }
+    );
+  }
 }

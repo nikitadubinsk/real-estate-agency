@@ -1,3 +1,22 @@
 <section class="block">
-  <app-ad></app-ad>
+  <tui-island [hoverable]="true" class="tui-space_bottom-8" *ngIf=" !loading">
+    <div class="tui-island__category">Личные данные</div>
+    <div class="personal">
+      <tui-avatar [text]="account.name" [rounded]="true" size="l"></tui-avatar>
+      <div>
+        <p><strong>ФИО: </strong>{{account.name}}</p>
+        <p><strong>Логин: </strong>{{account.email}}</p>
+        <p><strong>Дата рождения: </strong>{{account.birthday | date:'dd.MM.YYYY'}}</p>
+      </div>
+    </div>
+    <a tuiLink icon="tuiIconArrowRight" iconAlign="right" routerLink='/'>Продолжить выбирать</a>
+
+  </tui-island>
+  <tui-island [hoverable]="true" class="tcenter" *ngIf="ads.length == 0">
+    <tui-marker-icon src="tuiIconMinusCircle"></tui-marker-icon>
+    <p class="tui-text_h5">Нет понравившихся объявлений</p>
+    <tui-loader [showLoader]="loading" size="xl">
+    </tui-loader>
+  </tui-island>
+  <app-ad *ngFor="let ad of ads" [ad]="ad" [isLike]="true" (onLike)="like($event)"></app-ad>
 </section>

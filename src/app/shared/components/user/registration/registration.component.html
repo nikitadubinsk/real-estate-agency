@@ -1,6 +1,9 @@
 <form [formGroup]="registration">
   <h3 class="tui-island__title">Регистрация</h3>
-  <tui-input class="b-form" formControlName="name" tuiTextfieldAutocomplete="name">
+  <tui-notification class="tui-space_top-4" *ngIf="error$ | async as error">
+    {{error}}
+  </tui-notification>
+  <tui-input class="tui-space_top-2" formControlName="name" tuiTextfieldAutocomplete="name">
     Введите имя
   </tui-input>
   <tui-input class="tui-space_top-2" formControlName="email" tuiTextfieldAutocomplete="email">
@@ -15,7 +18,8 @@
   <tui-checkbox-labeled formControlName="personalData" class="tui-space_top-2">
     Даю согласие на обработку моих персональных данных
   </tui-checkbox-labeled>
-  <button tuiButton type="button" class="tui-space_top-2 maxWidth" [disabled]="registration.invalid">
+  <button tuiButton type="button" class="tui-space_top-2 maxWidth" [disabled]="registration.invalid"
+    [showLoader]="loading" (click)="registrate()">
     Зарегестрироваться
   </button>
   <p class="tui-island__paragraph tui-island__paragraph_link">Уже есть аккаунт? Самое время

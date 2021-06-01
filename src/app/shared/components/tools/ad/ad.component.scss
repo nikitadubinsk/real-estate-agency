@@ -1,0 +1,162 @@
+.island {
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+  margin-bottom: 2%;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 8px 16px rgb(51 51 51 / 20%);
+  .footer {
+    display: none;
+  }
+  h5 {
+    display: flex;
+    align-items: center;
+    .light-mode {
+      background-color: #3aa981;
+    }
+    .dark-mode {
+      background-color: #526ed3;
+    }
+  }
+  .map {
+    width: 20vw;
+    z-index: 2;
+  }
+  .photo {
+    width: 20vw;
+    overflow: hidden;
+    z-index: 1;
+    button {
+      margin: 2%;
+    }
+    img {
+      width: 150%;
+    }
+  }
+  .details {
+    width: 40vw;
+    padding: 1%;
+    z-index: 2;
+    position: relative;
+    .like {
+      position: absolute;
+      top: 2%;
+      right: 1%;
+      background: white;
+      box-sizing: border-box;
+      cursor: pointer;
+      color: var(--tui-text-03);
+      transition: 0.5s;
+      &:hover {
+        color: var(--tui-negative-hover);
+      }
+    }
+  }
+  .realtor {
+    display: flex;
+    div:nth-child(1) {
+      width: 32vw;
+      margin-right: 1vw;
+    }
+  }
+}
+
+.bold {
+  font-weight: 900;
+}
+
+.gray {
+  color: var(--tui-text-03);
+}
+
+.miniMap {
+  display: none;
+}
+
+.isLike {
+  color: var(--tui-negative) !important;
+  &:hover {
+    color: var(--tui-text-03) !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .island {
+    flex-direction: column !important;
+  }
+  .photo,
+  .map {
+    display: none;
+  }
+  .details {
+    width: 100% !important;
+  }
+  .footer {
+    display: flex !important;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: -10px;
+    .photoMini {
+      width: 45vw;
+    }
+    .mapMini {
+      width: 45vw !important;
+      img {
+        width: 45vw !important;
+      }
+    }
+  }
+  .realtor {
+    div:nth-child(1) {
+      width: 59vw;
+      margin-right: 1vw;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  h5 {
+    flex-direction: column;
+    text-align: left;
+    tui-tag {
+      margin: 1% 0;
+    }
+  }
+  .island {
+    flex-direction: column !important;
+    margin-bottom: 5vh;
+  }
+  .photo,
+  .map {
+    display: none;
+  }
+  .details {
+    width: 100% !important;
+  }
+  .footer {
+    display: block !important;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: -10px;
+    .photoMini {
+      width: 98vw;
+    }
+  }
+  .realtor {
+    flex-direction: column;
+    width: 98vw !important;
+    div {
+      width: 98vw !important;
+      margin-right: 0vw !important;
+    }
+  }
+  .miniMap {
+    display: block;
+    width: 98vw;
+    height: 25vh;
+  }
+  .mapMini {
+    display: none;
+  }
+}

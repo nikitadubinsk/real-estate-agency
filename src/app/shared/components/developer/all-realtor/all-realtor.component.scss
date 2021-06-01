@@ -24,3 +24,27 @@ tr:nth-child(odd) {
 tr:nth-child(even) {
   background: var(--tui-neutral-bg);
 }
+
+@media (max-width: 850px) {
+  table {
+    margin-top: 1rem;
+    th {
+      display: none;
+    }
+    tr {
+      display: block;
+      td {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1rem;
+        padding: 5px;
+
+        &::before {
+          content: attr(data-label);
+          font-weight: bold;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}

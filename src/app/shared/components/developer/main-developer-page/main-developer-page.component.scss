@@ -1,7 +1,25 @@
 section {
-  background: url(../../../../../assets/back.png) no-repeat center top / cover;
+  background: url(../../../../../assets/back.svg) no-repeat center top / cover;
   min-height: 100vh;
-  tui-tabs {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: white;
+    tui-tabs {
+      position: relative;
+      width: 90%;
+    }
+    button {
+      margin-right: 1%;
+    }
+  }
+  .tui-text_h3 {
+    display: block;
+  }
+}
+@media screen and (max-width: 850px) {
+  .tui-text_h3 {
+    display: none;
   }
 }

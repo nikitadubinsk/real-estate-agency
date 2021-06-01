@@ -1,0 +1,17 @@
+.bold {
+  font-weight: 900;
+}
+
+.light {
+  font-weight: normal;
+}
+
+.sort {
+  background: white;
+  display: flex;
+  p {
+    margin-right: 2%;
+    cursor: pointer;
+    user-select: none;
+  }
+}

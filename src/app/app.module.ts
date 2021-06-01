@@ -2,6 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {
+  AngularYandexMapsModule,
+  YaConfig,
+  YA_CONFIG,
+} from 'angular8-yandex-maps';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './shared/components/user/main-page/main-page.component';
@@ -23,17 +29,25 @@ import {
   TuiTabsModule,
   TuiTextAreaModule,
   TuiMarkerIconModule,
+  TuiTagModule,
+  TuiAvatarModule,
 } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   TuiButtonModule,
   TuiDataListModule,
+  TuiGroupModule,
+  TuiHostedDropdownModule,
   TuiLinkModule,
   TuiLoaderModule,
   TuiNotificationModule,
   TuiRootModule,
+  TuiSvgModule,
 } from '@taiga-ui/core';
-import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
+import {
+  TuiCurrencyPipeModule,
+  TuiMoneyModule,
+} from '@taiga-ui/addon-commerce';
 import { AdComponent } from './shared/components/tools/ad/ad.component';
 import { AuthenticationDeveloperComponent } from './shared/components/developer/authentication-developer/authentication-developer.component';
 import { RegistrationDeveloperComponent } from './shared/components/developer/registration-developer/registration-developer.component';
@@ -50,6 +64,15 @@ import { AuthorizationRealtorComponent } from './shared/components/realtor/autho
 import { AuthenticationRealtorComponent } from './shared/components/realtor/authentication-realtor/authentication-realtor.component';
 import { NewPasswordRealtorComponent } from './shared/components/realtor/new-password-realtor/new-password-realtor.component';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
+import { RealtorFilterPipe } from './shared/pipes/realtor-filter.pipe';
+import { EditRealtorComponent } from './shared/components/developer/edit-realtor/edit-realtor.component';
+import { AdsFilterPipe } from './shared/pipes/ads-filter.pipe';
+import { MiniAdComponent } from './shared/components/tools/mini-ad/mini-ad.component';
+
+const mapConfig: YaConfig = {
+  apikey: 'ea1646d1-2502-47b0-8738-bd4f2afe3830',
+  lang: 'ru_RU',
+};
 
 @NgModule({
   declarations: [
@@ -73,6 +96,10 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
     AuthorizationRealtorComponent,
     AuthenticationRealtorComponent,
     NewPasswordRealtorComponent,
+    RealtorFilterPipe,
+    EditRealtorComponent,
+    AdsFilterPipe,
+    MiniAdComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,8 +130,23 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
     TuiLoaderModule,
     BrowserAnimationsModule,
     TuiMarkerIconModule,
+    AngularYandexMapsModule.forRoot(mapConfig),
+    TuiSvgModule,
+    TuiMoneyModule,
+    TuiTagModule,
+    TuiAvatarModule,
+    TuiGroupModule,
+    TuiHostedDropdownModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: YA_CONFIG,
+      useValue: {
+        apikey: 'ea1646d1-2502-47b0-8738-bd4f2afe3830',
+        lang: 'ru_RU',
+      },
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
