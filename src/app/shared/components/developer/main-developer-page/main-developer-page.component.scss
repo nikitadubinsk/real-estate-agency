@@ -23,3 +23,12 @@ section {
     display: none;
   }
 }
+
+@media print {
+  section {
+    background: white;
+    nav {
+      display: none;
+    }
+  }
+}

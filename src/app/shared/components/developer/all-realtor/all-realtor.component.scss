@@ -25,7 +25,7 @@ tr:nth-child(even) {
   background: var(--tui-neutral-bg);
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   table {
     margin-top: 1rem;
     th {
@@ -46,5 +46,27 @@ tr:nth-child(even) {
         }
       }
     }
+  }
+}
+
+@media print {
+  @page :first {
+    margin: 1cm;
+  }
+  .tui-island__category {
+    display: none;
+  }
+  tui-input {
+    display: none;
+  }
+  button {
+    display: none;
+  }
+  tui-island {
+    box-shadow: none;
+    width: 100%;
+  }
+  .tui-island__title {
+    text-align: center;
   }
 }
